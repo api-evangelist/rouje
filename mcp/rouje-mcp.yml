@@ -1,0 +1,41 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://www.rouje.com/llms.txt
+note: >-
+  Rouje's storefront (Shopify) exposes a hosted Universal Commerce Protocol (UCP)
+  MCP endpoint for agent-driven commerce. The endpoint enforces a buyer-approval
+  invariant: agents must not complete payment without explicit contemporaneous
+  buyer consent. A live tools/list probe returns -32001 (UCP discovery requires a
+  valid agent profile URI); the tool surface below is transcribed from the
+  provider-published llms.txt and the /.well-known/ucp profile, not fabricated.
+server:
+  name: rouje-ucp-shopping
+  transport: http
+  protocol: mcp
+  url: https://www.rouje.com/api/ucp/mcp
+  canonical_endpoint: https://rouje-paris.myshopify.com/api/ucp/mcp
+  ucp_version: '2026-04-08'
+  supported_versions: ['2026-04-08', '2026-01-23']
+  spec: https://ucp.dev/2026-04-08/services/shopping/mcp.openrpc.json
+  auth: none for read; buyer-approved checkout for payment (Shop Pay via shop.app SKILL.md)
+tools:
+- name: search_catalog
+  description: Search the store catalog for products matching a buyer's intent
+- name: create_cart
+  description: Create a cart and add desired items
+- name: create_checkout
+  description: Start the purchase flow for a cart
+- name: update_checkout
+  description: Set the shipping address and method on a checkout
+- name: complete_checkout
+  description: Finalize the purchase (buyer must approve payment)
+capabilities:
+- dev.ucp.shopping.catalog.search
+- dev.ucp.shopping.catalog.lookup
+- dev.ucp.shopping.cart
+- dev.ucp.shopping.checkout
+- dev.ucp.shopping.fulfillment
+- dev.ucp.shopping.discount
+- dev.ucp.shopping.order
+- dev.shopify.catalog

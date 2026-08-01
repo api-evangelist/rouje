@@ -1,0 +1,38 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.rouje.com/llms.txt, https://www.rouje.com/.well-known/ucp
+note: >-
+  Cross-cutting agent-commerce conventions for Rouje's Shopify storefront,
+  captured from the provider-published llms.txt / agents.md and the UCP profile.
+  Idempotency is not documented on this surface, so no Idempotency contract is asserted.
+authentication:
+  read: none (public catalog JSON endpoints)
+  transact: buyer-approved checkout; OIDC (Shopify Customer Account API) for identity
+agent_commerce:
+  protocol: Universal Commerce Protocol (UCP)
+  spec: https://ucp.dev
+  mcp_endpoint: https://www.rouje.com/api/ucp/mcp
+  discovery: GET https://www.rouje.com/.well-known/ucp
+  buyer_approval_invariant: >-
+    Agents must not complete payment without explicit contemporaneous buyer consent;
+    otherwise route through Shop Pay via https://shop.app/SKILL.md.
+  context_params:
+  - context.address_country
+  - context.currency
+rate_limiting:
+  signal: HTTP 429
+  guidance: The MCP endpoint is rate-limited per IP; back off on 429 responses.
+read_only_browsing:
+  product_json: GET /products/{handle}.json
+  collection_json: GET /collections/{handle}/products.json
+  search: GET /search?q={query}&type=product
+  sitemap: GET /sitemap.xml
+versioning:
+  scheme: date-based UCP versions
+  current: '2026-04-08'
+  supported: ['2026-04-08', '2026-01-23']
+cross_links:
+  authentication: authentication/rouje-authentication.yml
+  scopes: scopes/rouje-scopes.yml
+  well_known: well-known/rouje-well-known.yml
+  mcp: mcp/rouje-mcp.yml

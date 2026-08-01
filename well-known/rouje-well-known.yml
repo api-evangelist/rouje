@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: live probes of https://www.rouje.com/.well-known/*
+host: https://www.rouje.com
+note: >-
+  Rouje runs on Shopify. The OAuth/OIDC discovery documents are served by
+  Shopify's Customer Account API (issuer https://shopify.com/authentication/69929140544)
+  and the UCP profile advertises Shopify's native agent-commerce surface
+  (Universal Commerce Protocol, https://ucp.dev).
+documents:
+- path: /.well-known/openid-configuration
+  status: 200
+  file: rouje-openid-configuration.json
+  description: OIDC discovery for the Shopify Customer Account API (authorization_code + PKCE)
+- path: /.well-known/oauth-authorization-server
+  status: 200
+  file: rouje-oauth-authorization-server.json
+  description: RFC 8414 authorization-server metadata (mirrors the OIDC discovery)
+- path: /.well-known/ucp
+  status: 200
+  file: rouje-ucp.json
+  description: Universal Commerce Protocol merchant profile — services, capabilities, payment handlers
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404

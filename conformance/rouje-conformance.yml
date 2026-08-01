@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.rouje.com/.well-known/ucp, https://www.rouje.com/.well-known/openid-configuration
+note: >-
+  Standards conformance derived from Rouje's live agent-native surface (Shopify).
+  These are cross-cutting protocol standards, not a published compliance program.
+standards:
+- id: oauth2
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server advertises authorization_code + refresh_token grants
+- id: oidc
+  conforms: true
+  evidence: /.well-known/openid-configuration with RS256 id_tokens, PKCE (S256)
+- id: oauth2-pkce
+  conforms: true
+  evidence: code_challenge_methods_supported = [S256]
+- id: rfc8414-authorization-server-metadata
+  conforms: true
+  evidence: /.well-known/oauth-authorization-server returns 200
+- id: mcp
+  conforms: true
+  evidence: UCP shopping MCP endpoint at /api/ucp/mcp (transport mcp)
+- id: ucp-universal-commerce-protocol
+  conforms: true
+  evidence: /.well-known/ucp advertises UCP 2026-04-08 with shopping services + capabilities
+- id: llms-txt
+  conforms: true
+  evidence: /llms.txt published (agent instructions, mirrors /agents.md)
+- id: rfc9116-security-txt
+  conforms: false
+  evidence: /.well-known/security.txt returns 404

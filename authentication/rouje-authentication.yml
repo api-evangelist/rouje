@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.rouje.com/.well-known/openid-configuration
+note: >-
+  Rouje has no first-party developer API. Authentication is provided by the
+  Shopify Customer Account API (OpenID Connect) fronting the storefront, and by
+  the buyer-approval flow of the Universal Commerce Protocol for agent commerce.
+  Read-only catalog browsing (/products/{handle}.json, /collections/*) requires
+  no authentication.
+summary:
+  types: [oauth2, openIdConnect]
+  oauth2_flows: [authorizationCode]
+  pkce: S256
+  api_key_in: []
+schemes:
+- name: ShopifyCustomerAccountOIDC
+  type: openIdConnect
+  openIdConnectUrl: https://www.rouje.com/.well-known/openid-configuration
+  issuer: https://shopify.com/authentication/69929140544
+  authorization_endpoint: https://shopify.com/authentication/69929140544/oauth/authorize
+  token_endpoint: https://shopify.com/authentication/69929140544/oauth/token
+  jwks_uri: https://shopify.com/authentication/69929140544/.well-known/jwks.json
+  end_session_endpoint: https://shopify.com/authentication/69929140544/logout
+  grant_types: [authorization_code, refresh_token, 'urn:ietf:params:oauth:grant-type:jwt-bearer']
+  code_challenge_methods: [S256]
+  token_endpoint_auth_methods: [client_secret_basic]
+  id_token_signing_alg: [RS256]
+  sources: [well-known/rouje-openid-configuration.json]

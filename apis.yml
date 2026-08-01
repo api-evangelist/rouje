@@ -1,7 +1,27 @@
 aid: rouje
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/rouje.png
 name: Rouje
-description: 'Rouje is a company surfaced as a portfolio company of partech and added to the API Evangelist
-  network as a stub for enrichment. Sector: Consumer. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Rouje is a Parisian ready-to-wear and beauty brand founded by Jeanne Damas, selling
+  feminine ready-to-wear, shoes, accessories, and the "Les Filles en Rouje" makeup and
+  skincare line direct-to-consumer online and through boutiques across France. Rouje has
+  no first-party developer API, but its Shopify-hosted storefront exposes a native
+  agent-commerce surface: a Universal Commerce Protocol (UCP) MCP endpoint for
+  agent-driven shopping and checkout, a published llms.txt / agents.md with explicit
+  agent instructions, Shopify Customer Account API OpenID Connect discovery, and public
+  read-only product/collection JSON endpoints. Surfaced as a portfolio company of Partech.
 url: https://raw.githubusercontent.com/api-evangelist/rouje/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,11 +31,35 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Consumer
-apis: []
+- Fashion
+- Beauty
+- Retail
+- Ecommerce
+- Shopify
+- Agentic Commerce
+- Paris
+apis:
+- name: Rouje Agentic Commerce (UCP / MCP)
+  description: >-
+    Agent-driven commerce surface for the Rouje storefront, implementing the Universal
+    Commerce Protocol (UCP) over MCP: catalog search, cart, checkout, fulfillment, and
+    order tools, with a buyer-approval invariant on payment. Hosted by Shopify.
+  humanURL: https://www.rouje.com/llms.txt
+  baseURL: https://www.rouje.com/api/ucp/mcp
+  tags:
+  - Agentic Commerce
+  - MCP
+  - UCP
+  - Ecommerce
+  properties:
+  - type: MCPServer
+    url: mcp/rouje-mcp.yml
+  - type: LLMsTxt
+    url: llms/rouje-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,3 +68,30 @@ maintainers:
 common:
 - type: Website
   url: https://int.rouje.com/
+- type: WellKnown
+  url: well-known/rouje-well-known.yml
+- type: MCPServer
+  url: mcp/rouje-mcp.yml
+- type: LLMsTxt
+  url: llms/rouje-llms.txt
+- type: Authentication
+  url: authentication/rouje-authentication.yml
+- type: OAuthScopes
+  url: scopes/rouje-scopes.yml
+- type: OpenIDConnect
+  url: https://www.rouje.com/.well-known/openid-configuration
+- type: Conformance
+  url: conformance/rouje-conformance.yml
+- type: Conventions
+  url: conventions/rouje-conventions.yml
+- type: DomainSecurity
+  url: security/rouje-domain-security.yml
+- type: PrivacyPolicy
+  url: https://www.rouje.com/policies/privacy-policy
+- type: TermsOfService
+  url: https://www.rouje.com/policies/terms-of-service
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 11
+  pass: local-v1
