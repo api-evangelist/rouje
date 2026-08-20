@@ -38,6 +38,16 @@ tags:
 - Fashion
 - Beauty
 - Retail
+- E-Commerce
+- Shopify
+- Agentic Commerce
+- Paris
+tags_raw:
+- Company
+- Consumer
+- Fashion
+- Beauty
+- Retail
 - Ecommerce
 - Shopify
 - Agentic Commerce
@@ -51,6 +61,11 @@ apis:
   humanURL: https://www.rouje.com/llms.txt
   baseURL: https://www.rouje.com/api/ucp/mcp
   tags:
+  - Agentic Commerce
+  - MCP
+  - UCP
+  - E-Commerce
+  tags_raw:
   - Agentic Commerce
   - MCP
   - UCP
