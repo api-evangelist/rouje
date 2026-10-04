@@ -86,6 +86,9 @@ apis:
     url: mcp/rouje-mcp.yml
   - type: LLMsTxt
     url: llms/rouje-llms.txt
+  x-surface: platform-generated
+  x-platform: shopify
+  x-platform-surface: ucp
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
