@@ -1,0 +1,16 @@
+generated: '2026-10-12'
+method: none
+source:
+- https://zapier.com/apps/rouje/integrations
+- https://n8n.io/integrations/rouje/
+- https://composio.dev/toolkits/rouje
+- https://monid.ai/tools/rouje
+checked:
+- https://composio.dev/toolkits/rouje
+- https://monid.ai/tools/rouje
+- https://n8n.io/integrations/rouje/
+- https://zapier.com/apps/rouje/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []
